@@ -1,24 +1,22 @@
-import car
-import cross
-import road
+import dataProcess
+import SeekForPath
+import init
+import Schedue
+carPath = './map/config_10/car.txt'
+crossPath = './map/config_10/cross.txt'
+roadPath = './map/config_10/road.txt'
 
-carPath = './map/config_1/car.txt'
-crossPath = './map/config_1/cross.txt'
-roadPath = './map/config_1/road.txt'
 
-carData = []
-crossData = []
-roadData = []
 
 if __name__ == "__main__":
 
-    with open(carPath, 'r') as lines:
-        for line in lines:
-            carData.append(line)
-    with open(roadPath, 'r') as lines:
-        for line in lines:
-            roadData.append(line)
-    with open(crossPath, 'r') as lines:
-        for line in lines:
-            crossData.append(line)
-    print(len(carData), len(roadData), len(crossData))
+
+    carData, crossData, roadData = dataProcess.dataProcess(carPath, crossPath, roadPath)
+    carRoute = SeekForPath.Seek(carData, crossData, roadData)
+    carList, roadList, crossList = init.MapInit(carData, crossData, roadData, carRoute)
+
+    print("Initialize finish, ready to Scheduling......")
+
+    Schedue.MapScheduling(carList, roadList, crossList)
+
+
