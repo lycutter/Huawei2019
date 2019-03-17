@@ -77,7 +77,7 @@ def Seek(carData, crossData, roadData):
             if ((roadData[j][-3] == sumarize[lengthSumarize - i] and roadData[j][-2] == sumarize[lengthSumarize - i -1]) or (roadData[j][-2] == sumarize[lengthSumarize - i] and roadData[j][-3] == sumarize[lengthSumarize - i -1])):
                 carRouteTmp.append(roadData[j][0])
     carRoute.append(carRouteTmp)
-
+    print("OK")
 
 if __name__ == "__main__":
     Seek(carData, crossData, roadData)
